@@ -1,0 +1,24 @@
+// topic: 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+
+function jumpFloorII(number)
+{
+    let f0 = 0;
+    let step = 1;
+    let result = 1;
+    if (number > 0){
+        let last_step = 0;
+        let current_step = 0;
+        while (step <= number) {
+            last_step = current_step;
+            current_step = last_step + result;
+            result += last_step;
+            step++;
+        }
+        return result;
+    } else {
+        return f0;
+    }
+}
+
+let value = jumpFloorII(0);
+console.log(value);
