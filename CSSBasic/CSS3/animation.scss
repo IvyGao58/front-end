@@ -1,0 +1,42 @@
+@mixin basic {
+  width: 200px;
+  height: 200px;
+  border: 1px solid;
+  background: #006666;
+  margin: 50px auto;
+}
+.container{
+  @include basic;
+  animation: drift 2s infinite alternate both;
+}
+.container-color {
+  @include basic;
+  //animation: color 2s 2s forwards; // keep last-frame style when the flash ends.
+  //animation: color 2s 2s backwards; // key first-frame style during the delay time.
+  animation: color 2s 2s both; // keep the styles above(forwards + backwards)
+  animation-timing-function: steps(4);
+  background: grey;
+}
+@keyframes drift {
+  from {
+    transform: translate(0,0);
+  }
+  30% {
+    transform: translate(40px, 0);
+  }
+  60% {
+    transform: translate(80px, 0);
+  }
+  to {
+    transform: translate(120px, 0);
+  }
+}
+
+@keyframes color {
+  from {
+    background: blue;
+  }
+  to {
+    background: red;
+  }
+}

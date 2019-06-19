@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不定高水平居中</title>
+</head>
+<body>
+    <div class="father-position">
+        <div class="child-position">
+            use position
+        </div>
+    </div>
+
+    <div class="father-flex">
+        <div class="child-flex">
+            use flex
+        </div>
+    </div>
+
+    <div class="father-table">
+        <div class="child-table">
+            use table
+        </div>
+    </div>
+</body>
+
+<style>
+    /* third */
+    .father-table {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+    }
+
+    .child-table {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+
+    /* second */
+    .father-flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+    }
+
+    .child-flex{
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+
+    /* first */
+    .father-position {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+    }
+
+    .child-position {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+</style>
+</html>

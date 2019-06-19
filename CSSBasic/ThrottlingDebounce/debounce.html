@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖</title>
+</head>
+<body>
+<script>
+    // 防抖
+    // 一段时间内只触发一次事件
+    // 5s内无论onresize怎么触发，都只会调用一次myFunc
+    let count = 0;
+    let debounce = function(fn, delay) {
+        let timer = null;
+        return function() {
+            let context = this;
+            let args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                fn.apply(context, args);
+            }, delay);
+        }
+    };
+
+    let myFunc = function() {
+        console.log('第' + count + '次调用');
+        count++;
+    };
+    window.onresize = debounce(myFunc, 5000);
+</script>
+</body>
+</html>

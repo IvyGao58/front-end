@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>documentDomain-A跨域</title>
+</head>
+<body>
+    <iframe src="http://b.zf1.cn:3000/b.html"
+    frameborder="0"
+    id="frame"
+    onload="load"></iframe>
+    <script>
+        // document.domain 必须是在一级二级域名的设置下有效
+        // 域名，一级域名，二级域名
+        // www.baidu.com
+        // gaojun.baidu.com
+        // 域名不同，跨域
+        // a是通过http://a.zf1.cn:3000/a.html
+        document.domain = 'zf1.cn' // 说明一级域名（与b.html属于同一个一级域名）
+        function load() {
+            console.log(frame.contentWindow.a)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b-postMessage跨域</title>
+</head>
+<body>
+ <script>
+     window.onmessage = function (e) {
+         console.log(e.data)
+         e.source.postMessage('I don\'t like you, I am b.html', e.origin) //
+     }
+ </script>
+</body>
+</html>

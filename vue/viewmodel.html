@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue双向绑定原理</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <input v-model="name">
+        <h2>{{name}}</h2>
+        <button v-on:click="handleClick">Click me!</button>
+    </div>
+</body>
+
+<script src="./Observer.js"></script>
+<script src="./Watcher.js"></script>
+<script src="./Compile.js"></script>
+<script src="./index.js"></script>
+<script type="text/javascript">
+    new SelfVue({
+        el: '#app',
+        data: {
+            title: 'Good afternoon',
+            name: 'Gao'
+        },
+        methods: {
+            handleClick: function() {
+                this.title = 'hello world'
+                console.log('hello world')
+            }
+        },
+        mounted: function() {
+            window.setTimeout(()=> {
+                this.title = '你好'
+            }, 1000)
+        }
+    });
+</script>
+</html>

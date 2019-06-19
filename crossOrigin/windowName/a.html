@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window[name]跨域-a</title>
+</head>
+<body>
+    a和b是同域的，http://localhost:3000
+    c是独立的,http://localhost:4000
+    a获取c的数据
+    a先引用c c把值放到window.name，把a的引用地址改到b
+
+    <iframe src="http://localhost:4000/c.html" frameborder="0" id="frame" onload="load()"></iframe>
+    <script>
+        let first = true
+        function load() {
+            if(first) {
+                let frame = document.getElementById('frame')
+                frame.src='http://localhost:3000/b.html'
+                first = false
+            } else {
+                console.log(frame.contentWindow.name)
+            }
+        }
+    </script>
+</body>
+</html>

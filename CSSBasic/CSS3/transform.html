@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变形</title>
+</head>
+<body>
+    <div class="container"></div>
+    <button onclick="handleScale()">缩放</button>
+    <button onclick="handleRotate()">旋转</button>
+    <button onclick="handleTranslate()">平移</button>
+    <script>
+        let element = document.getElementsByClassName('container')[0];
+        function handleScale() {
+            element.style.transform = 'scale(1.5)';
+            setTimeout(function() {
+                element.style.transform = 'scale(0.7)';
+            }, 1000)
+        }
+        function handleRotate() {
+            element.style.transform = 'rotate(30deg)'
+        }
+        function handleTranslate() {
+            element.style.transform = 'transition(100px, 200px)';
+        }
+    </script>
+<style>
+    .container{
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+        background: #006666;
+        margin: 50px auto;
+    }
+</style>
+</body>
+</html>

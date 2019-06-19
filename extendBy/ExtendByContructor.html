@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用构造函数的继承</title>
+</head>
+<body>
+    <script>
+        function SuperType(name) {
+            this.name = name
+            this.getValue = function() {
+                return true
+            }
+        }
+        function SubType() {
+            SuperType.call(this, 'Nicholas')
+            this.age = 23
+        }
+        var ins = new SubType()
+        console.log(ins.name)
+        console.log(ins.age)
+        console.log(ins.getValue())
+    </script>
+</body>
+</html>

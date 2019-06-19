@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用不同的方法创建对象和生成原型链</title>
+</head>
+<body>
+    <script>
+        // 1.语法结构创建,object, array, function
+        var obj = {
+            a: 1
+        }
+        // obj -> Object.prototype -> null
+        var arr = [1, 2]
+        // arr -> Array.prototype -> Object.prototype -> null
+
+        function syntax(){
+            return 2
+        }
+        // syntax -> Function.prototype -> Object.prototype -> null
+
+        // 2.构造器创建
+        Promise.prototype.add = function () {
+            console.log('add')
+        }
+        const promise = new Promise()
+        // promise.[[Prototype]]指向了Promise.prototype
+
+        // 3.Object.create()
+        // 新对象的原型就是调用 create 方法时传入的第一个参数
+        var a = {
+            name: 'Gao'
+        }
+        var b = Object.create(a)
+        // b -> a.prototype -> Object.prototype -> null
+
+        // 4.class 关键字创建的对象 es6
+        class Polygon {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+        }
+
+        class Square extends Polygon {
+            constructor(sideLength) {
+                super(sideLength, sideLength);
+            }
+            get area() {
+                return this.height * this.width;
+            }
+            set sideLength(newLength) {
+                this.height = newLength;
+                this.width = newLength;
+            }
+        }
+
+        var square = new Square(2);
+
+
+    </script>
+</body>
+</html>

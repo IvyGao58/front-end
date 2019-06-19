@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS-margin折叠</title>
+</head>
+<body>
+    <div class="embedding">
+        <div class="e-child">
+            I am embedding child
+        </div>
+        I am embedding parent
+    </div>
+
+    <div class="adjacent">
+        I am adjacent parent
+    </div>
+    <div class="a-child">
+        I am adjacent child
+    </div>
+    <style>
+        .embedding{
+            width: 200px;
+            height: 200px;
+            margin: 30px 0;
+        }
+
+        .e-child{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            margin-top: 20px;
+        }
+        .adjacent {
+            width: 100px;
+            height: 100px;
+            margin: 30px 0;
+        }
+        .a-child {
+            width: 100px;
+            height: 100px;
+            margin: 20px 0;
+        }
+    </style>
+</body>
+</html>

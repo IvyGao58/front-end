@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>溢出内容用省略号代替</title>
+</head>
+<body>
+<div>
+    <div class="content">
+        这是对于块级盒的处理：内容溢出内容溢出内容溢出内容溢出
+    </div>
+    <div class="flex-content">
+        这是对于伸缩盒的处理：内容溢出内容溢出内容溢出内容溢出
+    </div>
+</div>
+<style>
+    .content{
+        width: 260px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid;
+        white-space: nowrap;
+    }
+    .flex-content {
+        width: 260px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid;
+        /*这里要使用旧版本的两个伸缩属性，和一个webkit的私有属性*/
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+</style>
+</body>
+</html>

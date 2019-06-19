@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡（要有触发条件）</title>
+</head>
+<body>
+    <div class="container"></div>
+    <button onclick="handleTransition()">JS触发</button>
+    <span>伪元素触发</span>
+    <span>媒体查询触发</span>
+    <script>
+        function handleTransition() {
+            let element = document.getElementsByClassName('container')[0];
+            element.style.transform = 'translate(100px, 0)';
+        }
+    </script>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            background: #006666;
+            margin: 50px auto;
+            transition: transform 1500ms ease-out 500ms;
+        }
+        .container:hover{
+            transform: translate(100px, 0);
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                transform: scale(0.7);
+            }
+        }
+    </style>
+</body>
+</html>

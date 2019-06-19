@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图原生JS实现</title>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="images" style="left: 0">
+                <img src="./img/image1.jpg"/>
+                <img src="./img/image2.jpg"/>
+                <img src="./img/image3.jpg"/>
+            </div>
+        </div>
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="left-triangle triangle">
+            <span>&lt;</span>
+        </div>
+        <div class="right-triangle triangle">
+            <span>&gt;</span>
+        </div>
+    </div>
+<script>
+    function autoRollImg() {
+        const showContainer = document.getElementsByClassName('image-container')[0];
+        const container = document.getElementsByClassName('images')[0];
+        const leftTriangle = document.getElementsByClassName('left-triangle')[0];
+        const rightTriangle = document.getElementsByClassName('right-triangle')[0];
+        const dots = document.getElementsByClassName('dots')[0].children;
+        const imgWidth = container.children[0].offsetWidth;
+        const imgNum = container.children.length;
+        let index = 0;
+        let timer = null;
+
+        function rollAuto() {
+            timer = setInterval(function() {
+                movement(-imgWidth);
+                index = index + 1;
+                if(index > imgNum -1) {
+                    index = 0;
+                }
+                highLightDot(index);
+                if (parseInt(container.style.left) <= -imgNum * imgWidth) {
+                    container.style.left = 0;
+                }
+            }, 5000);
+        }
+        rollAuto();
+
+        // 鼠标移入
+        showContainer.onmousemove = function() {
+            clearInterval(timer);
+        };
+
+        // 鼠标移出
+        showContainer.onmouseout = function() {
+            rollAuto();
+        };
+
+        function movement(offset) {
+            let initLeft = parseInt(container.style.left);
+            let newLeft = initLeft + offset;
+            container.style.left = newLeft + 'px';
+        }
+
+        // 点击左右箭头
+        function clickTriangle() {
+            let imgNum = container.children.length;
+            leftTriangle.onclick = function() {
+                if(parseInt(container.style.left) >= 0) {
+                    container.style.left = -(imgNum - 1)*imgWidth + 'px';
+                } else {
+                    movement(imgWidth);
+                }
+                index = index - 1;
+                if(index < 0) {
+                    index = imgNum - 1;
+                }
+                highLightDot(index);
+            };
+            rightTriangle.onclick = function () {
+                if(parseInt(container.style.left) <= -(imgNum - 1) * imgWidth ){
+                    container.style.left = 0;
+                } else {
+                    movement(-imgWidth);
+                }
+                index = index + 1;
+                if(index > imgNum - 1) {
+                    index = 0;
+                }
+                highLightDot(index);
+            }
+        }
+        clickTriangle();
+
+        // 点击下方小圆点
+        function clickDot() {
+            for(var i = 0; i< dots.length; i++) {
+                (function(n) {
+                    dots[n].onclick = function() {
+                        container.style.left = -n * imgWidth + 'px';
+                        index = n;
+                        highLightDot(index);
+                    }
+                })(i);
+            }
+            return index;
+        }
+        clickDot();
+
+        // 点击小圆点后样式变化
+        function highLightDot(target) {
+            for(let i = 0; i< dots.length; i++) {
+                if(i !== target) {
+                    dots[i].classList.remove('active');
+                } else {
+                    dots[i].classList.add('active')
+                }
+            }
+        }
+    }
+    window.onload = autoRollImg;
+
+
+</script>
+<style>
+    .container{
+        margin: 0 auto;
+        width: 600px;
+        position: relative;
+        top: 20px;
+    }
+    .container .image-container{
+        width: 600px;
+        height: 380px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    .container .image-container .images {
+        width: 2000px;
+        position: absolute;
+        left: 0;
+    }
+    .container .image-container .images img{
+        display: block;
+        float: left;
+        width: 600px;
+        height: 380px;
+    }
+    .container .triangle {
+        position: absolute;
+        top: 40%;
+        font-size: 20px;
+        color: lightgray;
+        cursor:pointer;
+    }
+    .container .triangle:hover{
+        color: grey;
+    }
+    .container .left-triangle {
+        left: -50px;
+    }
+    .container .right-triangle {
+        right: -50px
+    }
+    .container .dots{
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+    }
+    .container .dots .dot{
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: lightgray;
+        cursor: pointer;
+    }
+    .container .dots .dot.active {
+        background: gray;
+    }
+</style>
+</body>
+</html>

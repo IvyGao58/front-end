@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this的使用</title>
+</head>
+<body>
+<script>
+    var name = 'freedom';
+    var obj = {
+        name: 'justify',
+        getName: function () {
+            console.log(this.name);
+            return this.name
+        },
+        child: {
+          name: 'stick',
+          getName: function () {
+              console.log(this.name);
+              return this.name
+          }
+        }
+    };
+    obj.getName();
+    obj.child.getName();
+
+    var childName = obj.getName;
+    childName(); // freedom 虽然obj的getName方法，赋值给了childName，但是childName没有调用。最后调用getName()的还是windows
+
+    function parentName(fn) {
+        return fn()
+    }
+    parentName(obj.getName) // freedom
+</script>
+</body>
+</html>
