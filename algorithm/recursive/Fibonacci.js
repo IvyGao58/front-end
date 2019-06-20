@@ -1,4 +1,7 @@
-// 斐波那契数列
+/**
+ * @topic: 斐波那契数列
+ * @Date: 2019-06-20
+ */
 
 // case pass: 0% 递归
 function Fibonacci(n)
