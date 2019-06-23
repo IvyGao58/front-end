@@ -1,4 +1,4 @@
-// pass 100%
+// pass
 let stack1 = [];
 let stack2 = [];
 function push(node)

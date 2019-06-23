@@ -1,11 +1,10 @@
-// 给定一个正整数，编写程序计算有多少对质数的和等于输入的这个正整数，并输出结果。输入值小于1000。
-// 如，输入为10, 程序应该输出结果为2。（共有两对质数的和为10,分别为(5,5),(3,7)）
-// input: 输入包括一个整数n,(3 ≤ n < 1000)
-// output: 输出对数
-// example input: 10
-// example output: 2
-
-// pass
+/*给定一个正整数，编写程序计算有多少对质数的和等于输入的这个正整数，并输出结果。输入值小于1000。
+如，输入为10, 程序应该输出结果为2。（共有两对质数的和为10,分别为(5,5),(3,7)）
+input: 输入包括一个整数n,(3 ≤ n < 1000)
+output: 输出对数
+example input: 10
+example output: 2
+pass*/
 
 let readline = require('readline')
 let myInterface = readline.createInterface({
