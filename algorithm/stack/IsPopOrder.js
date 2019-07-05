@@ -5,7 +5,7 @@
  * @Date: 2019-06-24
  */
 
-function IsPopOrder(pushV, popV){
+function isPopOrder(pushV, popV){
     if (!pushV.length) {
         return false;
     }
@@ -24,5 +24,5 @@ function IsPopOrder(pushV, popV){
 let arr1 = [1,2,3,4,5];
 let arr2 = [4,3,5,1,2]; // 0
 let arr3 = [4,5,3,2,1]; // 1
-let isCorrect = IsPopOrder(arr1, arr2);
+let isCorrect = isPopOrder(arr1, arr2);
 console.log(isCorrect);
