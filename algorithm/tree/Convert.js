@@ -53,7 +53,7 @@ let right12 = new TreeNode(23);
 
 root.left = left1;
 root.right = right1;
-// left1.left = left11;
+left1.left = left11;
 left1.right = left12;
 
 right1.left = right11;
