@@ -21,13 +21,13 @@ function partition(begin, end, arr) {
             swap(left, right, arr)
         }
     }
-    swap(begin, left, arr)
+    swap(begin, left, arr);
     return left;
 }
 
 function swap(i, j, arr) {
-    let temp = arr[i]
-    arr[i] = arr[j]
+    let temp = arr[i];
+    arr[i] = arr[j];
     arr[j] = temp
 }
 
