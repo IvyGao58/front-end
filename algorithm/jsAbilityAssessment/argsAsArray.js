@@ -7,6 +7,11 @@ function argsAsArray(fn, arr) {
     return fn.apply(this, arr);
 }
 
+/*es6
+function argsAsArray(fn, arr) {
+    return fn(...arr)
+}*/
+
 let value = argsAsArray(function (greeting, name, punctuation) {return greeting + ', ' + name + (punctuation || '!');},
             ['Hello', 'Ellie', '!']);
 console.log(value);
