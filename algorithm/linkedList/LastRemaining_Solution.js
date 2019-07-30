@@ -8,6 +8,19 @@
  * 不满足条件返回-1
  */
 
+// 1、约瑟夫环
+function remain(n, m) {
+    if (n<1 || m<1) {
+        return -1;
+    }
+    return (remain(n-1, m) +m) % n;
+}
+
+let v = remain(1,4);
+console.log(v);
+
+
+// 2、循环链表
 function Node(val) {
     this.val = val;
     this.next = null;
