@@ -3,6 +3,8 @@
  * @Date: 2019-07-30
  */
 
+
+// 短路表达式和递归
 function Sum_Solution2(n) {
     let ans = n;
     ans && (ans += Sum_Solution1(n-1));
