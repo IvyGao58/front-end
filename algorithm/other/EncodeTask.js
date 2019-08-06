@@ -11,7 +11,7 @@ output example: 16331*/
 // 思路：不穷举，因为是按序的，所以需要找到规律，发现n个字符前有多少个字符
 
 function encode(num) {
-    var strs = num.split('')
+    var strs = num.split('');
     var res = strs.map(function(item, index) {
         // 判断当前字符前有多少个字符，以计算一共要重复计算多少组合情况。
         const count = item.charCodeAt() - 'a'.charCodeAt();
@@ -30,4 +30,4 @@ function encode(num) {
     })
 }
 
-encode('baca')
+encode('baca');

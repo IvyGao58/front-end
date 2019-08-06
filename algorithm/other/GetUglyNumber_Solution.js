@@ -4,7 +4,7 @@
  * @Date: 2019-07-21
  */
 
-function GetUglyNumber_Solution(index) {
+function getUglyNumber_Solution1(index) {
     if (index === 0) {
         return 0;
     }
@@ -27,7 +27,7 @@ function GetUglyNumber_Solution(index) {
     return res[index - 1];
 }
 
-let value = GetUglyNumber_Solution(0);
+let value = getUglyNumber_Solution1(0);
 console.log(value);
 
 // 时间复杂度太高

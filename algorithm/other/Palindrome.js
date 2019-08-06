@@ -41,4 +41,4 @@ require('readline').createInterface({
     output: process.stdout
 }).on('line', function (line) {
     findLongestPalindromeByDelete(line);
-})
+});

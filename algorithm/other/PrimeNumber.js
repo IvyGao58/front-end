@@ -6,7 +6,7 @@ example input: 10
 example output: 2
 pass*/
 
-let readline = require('readline')
+let readline = require('readline');
 let myInterface = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -19,7 +19,7 @@ myInterface.on('line', function (line) {
     for(var i = 2; i <= num; i++) {
         isPrime(i) || prime.push(i)
     }
-    var count = 0
+    var count = 0;
     for(var m = 0; m < prime.length; m++) {
         for(var n = m; n< prime.length; n++) {
             if(prime[m] + prime[n] === num) {
@@ -27,7 +27,7 @@ myInterface.on('line', function (line) {
             }
         }
     }
-    console.log(count)
+    console.log(count);
     return count;
 });
 

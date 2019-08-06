@@ -6,15 +6,15 @@
  * 减一再与原值做&运算，会将该整数最右边一个1变成0。一个整数二进制有多少个1，就可以进行多少次这样的操作。
  */
 
-function NumberOf1(n)
+function numberOf1(n)
 {
     let count = 0;
-    while(n != 0){
+    while(n !== 0){
         count++;
         n = n & (n - 1);
     }
     return count;
 }
 
-let value1 = NumberOf1(5);
+let value1 = numberOf1(5);
 console.log(value1);
