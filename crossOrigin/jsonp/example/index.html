@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP(Json with padding)</title>
+</head>
+<body>
+    <input type="text" placeholder="" id="el-input">
+    <ul id="el-ul"></ul>
+    <script>
+        function getData(data) {
+            let script = document.querySelector('#jsonp');
+            script.parentNode.removeChild(script);
+            let ul = document.getElementById('el-ul');
+            ul.innerHTML = '';
+            if (data.g && data.g.length) {
+                data.g.forEach(item => {
+                    let li = document.createElement('li');
+                    li.innerHTML = item.q;
+                    ul.appendChild(li);
+                })
+            }
+        }
+        function getList(word) {
+            let script = document.createElement('script');
+            script.id = 'jsonp';
+            script.src = 'https://www.baidu.com/sugrec?prod=pc&cb=getData&wd=' + word;
+            document.body.appendChild(script);
+        }
+        let input = document.getElementById('el-input');
+        input.oninput = function() {
+            let value = document.getElementById('el-input').value;
+            getList(value);
+        }
+    </script>
+</body>
+</html>

@@ -6,12 +6,11 @@
 </head>
 <body>
     <script>
-        // 思路：在浏览器中创建一个<script>标签，src为请求的url。请求的查询字符串有一个callback参数。用来指定回调的名称。
-        // 回调函数在<script>标签中声明好，当请求完成后，响应的数据会作为参数传入回调函数中，并调用该函数。
-
-        // jsonp不足：从其他域加载代码执行，如果其他域不安全，可能会在响应中夹带一些恶意代码。
-        // 不太容易确定jsonp请求是否失败。
-        // 只能用于GET请求
+        /*思路：创建一个<script>标签，src为请求的url。请求的查询字符串有一个callback参数。用来指定回调的名称。
+        回调函数在<script>标签中声明好，当请求完成后，响应的数据会作为参数传入回调函数中，并调用该函数。
+        jsonp不足：从其他域加载代码执行，如果其他域不安全，可能会在响应中夹带一些恶意代码。
+        不太容易确定jsonp请求是否失败。
+        只能用于GET请求*/
 
         function show(data) {
             console.log(data)
@@ -23,15 +22,14 @@
             },
             cb: 'show'
         }).then(data => {
-            // 拿到跨域的结果
-            console.log(data)
+            console.log(data) // 拿到跨域的结果
         });
 
 
         // jsonp封装的实现
         function jsonp({url, params, cb}) {
             return new Promise((resolve, reject) => {
-                let script = document.createElement('script')
+                let script = document.createElement('script');
                 params = {...params, cb} ;// a=xxx&cb=xxx
                 let arr = [];
                 for(let key in params){
