@@ -2,26 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>cors跨域资源共享</title>
+    <title>CORS跨域资源共享-简单请求</title>
 </head>
 <body>
-    <script>
-        // ajax 新建一个xhr的对象
-        let xhr = new XMLHttpRequest()
-        // open
-        xhr.open('PUT', 'http://localhost:4000/getData', true)
-        document.cookie = 'name=Gao'
-        xhr.withCredentials = true
-        // 请求方式 请求路径 是否异步
-        xhr.onreadystatechange = function() {
-            if(xhr.readyState === 4) {
-                // 200以上300以内都是正常返回，304表示走缓存
-                if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                    console.log(xhr.response)
-                }
+<script>
+    let xhr = new XMLHttpRequest(); // ajax 新建一个xhr的对象
+    xhr.open('GET', 'http://localhost:4040/getData', true); // 请求方式 请求路径 是否异步
+    document.cookie = 'name=Gao';
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) { // 200以上300以内都是正常返回，304走缓存
+                console.log(xhr.response);
             }
         }
-        xhr.send()
-    </script>
+    };
+    xhr.send()
+</script>
 </body>
 </html>
