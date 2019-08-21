@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画三角形</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="draw">
+        <p>border</p>
+        <div class="use-top-border"></div>
+        <div class="use-left-border"></div>
+        <div class="use-right-border"></div>
+        <div class="use-bottom-border"></div>
+
+        <p>use svg img</p>
+        <div class="use-static-svg">
+            <img src="../assets/triangle.svg" style="width: 100px; height: 100px;"/>
+        </div>
+
+        <p>use svg</p>
+        <svg width="100" height="100">
+            <polyline points="0,80 40,20 80,80" fill="#000000" stroke="black"></polyline>
+        </svg>
+
+        <p>use font</p>
+        <div class="use-font-icon">
+            <span style="font-size: 3em; color: Tomato;">
+                <i class="fa fa-caret-right"></i>
+            </span>
+        </div>
+
+        <p>use clip path</p>
+        <div class="use-clip-path"></div>
+
+        <p>use canvas</p>
+        <div class="use-canvas">
+            <canvas id="canvas" width="100" height="100"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.moveTo(40, 0);
+        ctx.lineTo(0, 80);
+        ctx.lineTo(80, 80);
+        ctx.fill();
+    </script>
+
+    <style>
+        .draw {
+            margin: 0 auto;
+        }
+        .use-top-border {
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-top-color:grey;
+        }
+        .use-left-border {
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-left-color:grey;
+        }
+        .use-right-border {
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-right-color:grey;
+        }
+        .use-bottom-border {
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-bottom-color:grey;
+        }
+        .use-font-icon {
+            width: 100px;
+            text-align: center;
+        }
+        .use-clip-path {
+            width: 100px;
+            height: 100px;
+            clip-path: polygon(20% 80%, 50% 20%, 80% 80%);
+            background: #000000;
+        }
+        .use-canvas{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</body>
+</html>
