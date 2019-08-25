@@ -12,16 +12,10 @@ Function.prototype.myCall = function(context) {
     }
     context = context || window;
     context.fn = this;
-    let args = [];
-    for(let i = 1; i<arguments.length; i++) {
-        args.push(arguments[i]);
-    }
-    if (args.length) {
-        context.fn([...args]);
-    } else {
-        context.fn();
-    }
+    let args = [...arguments].slice(1);
+    let result = context.fn(...args);
     delete context.fn;
+    return result;
 };
 
 let dragon = {
@@ -35,4 +29,4 @@ let mouse = {
     }
 };
 
-mouse.getLocate.myCall(dragon);
+mouse.getLocate.myCall(dragon, 'hill');
