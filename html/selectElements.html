@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的方法</title>
+</head>
+<body>
+    <div id="container">
+        <p id="title">It's title</p>
+        <p id="location">It's location</p>
+        <p id="date">It's date</p>
+    </div>
+    <div class="btn" style="width: 80px; height: 25px;">
+        <button name="submit" style="width: 100%; height: 100%">submit</button>
+    </div>
+    <script>
+        let t0 = window.performance.now();
+        let title = document.getElementById('title');
+        let t1 = window.performance.now();
+        console.log(t1-t0 + 'ms', title);  // element
+
+        let t2 = window.performance.now();
+        let p_elements = document.getElementsByTagName('p');
+        let t3 = window.performance.now();
+        console.log(t3-t2+'ms', p_elements);  // HTMLCollection
+
+        let t4 = window.performance.now();
+        let btn = document.getElementsByClassName('btn');
+        let t5 = window.performance.now();
+        console.log(t5-t4+'ms', btn);  // HTMLCollection
+
+        let t6 = window.performance.now();
+        let name = document.getElementsByName('submit');
+        let t7 = window.performance.now();
+        console.log(t7-t6+'ms', name);  // NodeList
+
+        let t8 = window.performance.now();
+        let one = document.querySelector('#container');
+        let t9 = window.performance.now();
+        console.log(t9-t8+'ms', one);  // element
+
+        let t10 = window.performance.now();
+        let many = document.querySelectorAll('#container');
+        let t11 = window.performance.now();
+        console.log(t11-t10+'ms', many);  // NodeList
+
+
+    </script>
+</body>
+</html>
