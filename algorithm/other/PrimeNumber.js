@@ -1,43 +1,25 @@
-/*给定一个正整数，编写程序计算有多少对质数的和等于输入的这个正整数，并输出结果。输入值小于1000。
-如，输入为10, 程序应该输出结果为2。（共有两对质数的和为10,分别为(5,5),(3,7)）
-input: 输入包括一个整数n,(3 ≤ n < 1000)
-output: 输出对数
-example input: 10
-example output: 2
-pass*/
+/**
+ * @topic: 功能:输入一个正整数，按照从小到大的顺序输出它的所有质数的因子（如180的质数因子为2 2 3 3 5 ）
+           最后一个数后面也要有空格
+ * @Date: 2019-09-02
+ */
 
 let readline = require('readline');
-let myInterface = readline.createInterface({
+let rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-myInterface.on('line', function (line) {
-    var num = parseInt(line);
-    var prime = [];
-    // 先求小于n的素数
-    for(var i = 2; i <= num; i++) {
-        isPrime(i) || prime.push(i)
-    }
-    var count = 0;
-    for(var m = 0; m < prime.length; m++) {
-        for(var n = m; n< prime.length; n++) {
-            if(prime[m] + prime[n] === num) {
-                count++;
-            }
+rl.on('line', function (line) {
+    var num = Number(line);
+    var arr = [];
+    for(let i = 2; i<=num;) {
+        if(num % i === 0) {
+            arr.push(i);
+            num = num / i;
+        } else {
+            i++;
         }
     }
-    console.log(count);
-    return count;
+    console.log(arr.join(' ') + ' ');
 });
-
-function isPrime(num) {
-    for(var i = 2; i<= Math.sqrt(num); i++) {
-        if (num % i === 0) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// 再判断素数对（自己+自己）/（自己+别人）
