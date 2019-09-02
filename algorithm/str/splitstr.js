@@ -19,19 +19,12 @@ rl.on('line', function (line) {
     if (lines.length === 2) {
         for (let i = 0; i<lines.length; i++) {
             let target = lines[i];
-            if (target < 8) {
-                target += add;
-                console.log(target.slice(0, 8));
-            } else if (target === 8) {
-                console.log(target);
-            } else {
-                for (let j = 0; j<target.length; j+=8) {
-                    let substr = target.slice(j, j+8);
-                    if (substr.length < 8) {
-                        console.log((substr + add).slice(0,8));
-                    } else {
-                        console.log(substr);
-                    }
+            for (let j = 0; j<target.length; j+=8) {
+                let substr = target.slice(j, j+8);
+                if (substr.length < 8) {
+                    console.log((substr + add).slice(0,8));
+                } else {
+                    console.log(substr);
                 }
             }
         }
