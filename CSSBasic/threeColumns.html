@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三栏布局，左右固定中间自适应</title>
+</head>
+<body>
+    <p>flex: 左右固定中间自适应<p>
+    <div class="container">
+        <div class="left">
+            left
+        </div>
+        <div class="center">
+            center
+        </div>
+        <div class="right">
+            right
+        </div>
+    </div>
+
+    <!--questions: 伸缩浏览器窗口，左右div宽度也会发生变化？-->
+
+    <p>grid: 左右固定中间自适应<p>
+    <div class="grid-container">
+        <div class="grid-left">
+            left
+        </div>
+        <div class="grid-center">
+            center
+        </div>
+        <div class="grid-right">
+            right
+        </div>
+    </div>
+    <style>
+        * {
+            text-align: center;
+        }
+        .container{
+            display: flex;
+        }
+        .left{
+            flex-basis: 100px;
+            flex-shrink: 0;
+            border: 1px solid grey;
+        }
+        .center{
+            flex-grow: 1;
+            border: 1px solid blue;
+        }
+        .right{
+            flex-basis: 100px;
+            flex-shrink: 0;
+            border: 1px solid red;
+        }
+
+        .grid-container{
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+        }
+        .grid-left{
+            border: 1px solid grey;
+        }
+        .grid-center{
+            border: 1px solid blue;
+        }
+        .grid-right{
+            border: 1px solid red;
+        }
+    </style>
+</body>
+</html>
